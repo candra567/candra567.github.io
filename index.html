@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Candra|Wirawan</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="content">
+      <img src="download.png" alt="profil" id="profil" />
+      <h2>Candra Wirawan</h2>
+      <h6 id="time"></h6>
+      <ul>
+        <li><a href="">Github</a></li>
+        <li><a href="">Facebook</a></li>
+        <li><a href="">Instagram</a></li>
+        <li id="li">
+          <a href="" id="switch">
+            <img src="moon.png" alt="sun" width="20px" height="20px" id="tema"
+          /></a>
+        </li>
+      </ul>
+    </main>
+    <script>
+      const switchId = document.getElementById("switch");
+      const body = document.querySelector("body");
+      const tema = document.querySelector("#tema");
+      const li = document.querySelector("#li");
+      switchId.addEventListener("click", function (evt) {
+        evt.preventDefault();
+        if (tema.getAttribute("src") === "moon.png") {
+          tema.src = "sun.png";
+          li.style.transform = "scale(1.2)";
+          this.style.backgroundColor = "#d4dcde";
+          body.style.backgroundImage = "url('siang.jpg')";
+        } else if (tema.getAttribute("src") == "sun.png") {
+          tema.src = "moon.png";
+          this.style.backgroundColor = "#343f41";
+          li.style.transform = "scale(1)";
+          body.style.backgroundImage = "url('malam.jpg')";
+        }
+      });
+      function mode() {
+        let date = new Date();
+        let time = `${date.getHours()}.${date.getMinutes()}.${date.getSeconds()}`;
+        document.querySelector("#time").innerHTML = time;
+      }
+      window.setInterval(mode, 1000);
+    </script>
+  </body>
+</html>
